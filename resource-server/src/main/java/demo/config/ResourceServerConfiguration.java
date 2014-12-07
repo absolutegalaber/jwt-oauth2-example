@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.access.expression.DenyAllPermissionEvaluator;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -34,21 +36,22 @@ public class ResourceServerConfiguration  extends ResourceServerConfigurerAdapte
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
         // @formatter:off
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
-                    // Just for laughs, apply OAuth protection to only 2 resources
-                    .requestMatchers()
-                    .antMatchers("/**")
+                .requestMatchers()
+                .antMatchers("/**")
                 .and()
-                            .authorizeRequests()
-                            .antMatchers("/supersecure")
-                            .access("#oauth2.hasScope('write')")
-                .and()
-                    .authorizeRequests()
-                    .anyRequest()
-                    .access("#oauth2.hasScope('read')");
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").access("#oauth2.hasScope('read')")
+                .antMatchers(HttpMethod.PATCH, "/api/**").access("#oauth2.hasScope('write')")
+                .antMatchers(HttpMethod.POST, "/api/**").access("#oauth2.hasScope('write')")
+                .antMatchers(HttpMethod.PUT, "/api/**").access("#oauth2.hasScope('write')")
+                .antMatchers(HttpMethod.DELETE, "/api/**").access("#oauth2.hasScope('write')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
         // @formatter:on
     }

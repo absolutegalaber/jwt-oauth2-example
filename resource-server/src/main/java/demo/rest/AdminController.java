@@ -3,18 +3,16 @@ package demo.rest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 /**
  * @author Peter Schneider-Manzell
  */
 @RestController
-public class HelloWorldController {
+public class AdminController {
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello world !";
+
+
+    @RequestMapping("/admin/supersecure")
+    public String superSecureMessage(){
+        return "42";
     }
-
-
 }
