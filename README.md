@@ -30,6 +30,15 @@ This test project contains following setup:
 
 ## Playing with the setup
 
+### API documentation
+
+The resource server and the aggregation server expose their APIs via Swagger.
+Testing the calls is currently not possible because of missing OAuth integration in the Swagger UI
+
+1. Resource Server: Open http://localhost:8088/ and change the API URL to http://localhost:8088/api-docs
+1. Aggregation Server: Open http://localhost:8888/ and change the API URL to http://localhost:8888/api-docs
+
+
 ### Get an Access Token
 
 All access tokens can be decoded via https://developers.google.com/wallet/digital/docs/jwtdecoder
