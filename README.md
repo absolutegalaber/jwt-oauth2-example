@@ -1,5 +1,5 @@
 # Spring security based test project for Micro services using JWT
-
+[![Build Status](https://travis-ci.org/absolutegalaber/jwt-oauth2-example.svg?branch=master)](https://travis-ci.org/absolutegalaber/jwt-oauth2-example)
 
 This test project contains following setup:
 
