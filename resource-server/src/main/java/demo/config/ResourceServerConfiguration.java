@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpMethod;
@@ -25,6 +26,7 @@ import java.io.IOException;
  */
 @Configuration
 @EnableResourceServer
+@Import(PublicJWTConfig.class)
 public class ResourceServerConfiguration  extends ResourceServerConfigurerAdapter {
 
 
@@ -64,33 +66,5 @@ public class ResourceServerConfiguration  extends ResourceServerConfigurerAdapte
 
 
 
-    public static class Stuff {
-
-        @Autowired
-        JwtAccessTokenConverter jwtAccessTokenConverter;
-
-
-        @Bean
-        @Qualifier("tokenStore")
-        public TokenStore tokenStore() {
-
-            System.out.println("Created JwtTokenStore");
-            return new JwtTokenStore(jwtAccessTokenConverter);
-        }
-
-        @Bean
-        protected JwtAccessTokenConverter jwtTokenEnhancer() {
-            JwtAccessTokenConverter converter =  new JwtAccessTokenConverter();
-            Resource resource = new ClassPathResource("public.cert");
-            String publicKey = null;
-            try {
-                publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            converter.setVerifierKey(publicKey);
-            return converter;
-        }
-    }
 
 }

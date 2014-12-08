@@ -51,9 +51,9 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter implements ServletCon
     } **/
 
     private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo("Demo API", "API for Demo",
-                "Demo API terms of service", "demo@gmail.com",
-                "Demo API Licence Type", "Demo API License URL");
+        ApiInfo apiInfo = new ApiInfo("Aggregation Demo API", "API for Aggregation Demo",
+                "Aggregation Demo API terms of service", "aggregationdemo@gmail.com",
+                "Aggregation Demo API Licence Type", "Aggregation Demo API License URL");
         return apiInfo;
     }
 

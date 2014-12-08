@@ -20,6 +20,8 @@
     <modules>
         <module>auth-server</module>
         <module>resource-server</module>
+        <module>aggregation-server</module>
+        <module>jwt-public-config</module>
     </modules>
     
     <dependencies>
