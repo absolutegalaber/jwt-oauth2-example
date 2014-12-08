@@ -76,3 +76,5 @@ Rest GET call to the aggregation server, which uses the presented OAuth2 Token t
 1. Get an access token via authorization code or password
 2. Execute `curl -H "Content-Type: application/json" -H "Authorization: Bearer <your token>" http://localhost:8888/api/me`
 
+
+
