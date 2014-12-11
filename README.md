@@ -17,15 +17,15 @@ This test project contains following setup:
 
 ### Start the auth server
 
-1. Inside "auth-server" execute "mvn springBoot:run"
+1. Inside "auth-server" execute "mvn spring-boot:run"
 
 ### Start the resource server
 
-1. Inside "resource-server" execute "mvn springBoot:run"
+1. Inside "resource-server" execute "mvn spring-boot:run"
 
 ### Start the aggregation server
 
-1. Inside "aggregation-server" execute "mvn springBoot:run"
+1. Inside "aggregation-server" execute "mvn spring-boot:run"
 
 
 ## Playing with the setup
