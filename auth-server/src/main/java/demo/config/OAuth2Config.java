@@ -32,11 +32,6 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
     private static final String DUMMY_RESOURCE_ID = "dummy";
-    @Autowired
-    private TokenStore tokenStore;
-
-    @Autowired
-    private UserApprovalHandler userApprovalHandler;
 
     @Autowired
     @Qualifier("authenticationManagerBean")
