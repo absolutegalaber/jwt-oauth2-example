@@ -10,23 +10,8 @@ This test project contains following setup:
 
 ## How to start
 
-1. Make sure you have maven installed
-2. Make sure you have java 1.8 installed
-3. Checkout the source code
-4. Run "mvn clean install"
-
-### Start the auth server
-
-1. Inside "auth-server" execute "mvn spring-boot:run"
-
-### Start the resource server
-
-1. Inside "resource-server" execute "mvn spring-boot:run"
-
-### Start the aggregation server
-
-1. Inside "aggregation-server" execute "mvn spring-boot:run"
-
+1. Run "mvn clean install"
+2. Run "docker-compose up"
 
 ## Playing with the setup
 
