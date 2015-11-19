@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
     http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.9.RELEASE</version>
+        <version>1.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -16,15 +16,55 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring security JWT test project</name>
-    
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+    </properties>
+
     <modules>
         <module>auth-server</module>
         <module>resource-server</module>
         <module>aggregation-server</module>
         <module>jwt-public-config</module>
     </modules>
-    
-    <dependencies>
 
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.psm</groupId>
+                <artifactId>jwt-public-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-springmvc</artifactId>
+                <version>0.9.3</version>
+            </dependency>
+            <!-- Add provided dependency for the following scala library. This is for 0.9.3 onwards.
+            There are two reasons for this.
+    1. This is in preparation for v2.0 because swagger core is moving away from depending on the scala tool chain.
+    2. The scala toolchain that was transitively pulled in by swagger core was causing library size to bloat ref: https://speakerdeck.com/ankinson/documenting-restful-apis -->
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>2.10.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ajar</groupId>
+                <artifactId>swagger-spring-mvc-ui</artifactId>
+                <version>0.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>oss-jfrog-artifactory</id>
+            <name>oss-jfrog-artifactory-releases</name>
+            <url>http://oss.jfrog.org/artifactory/oss-release-local</url>
+        </repository>
+    </repositories>
+
 </project>

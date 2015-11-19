@@ -41,8 +41,8 @@ Testing the calls is currently not possible because of missing OAuth integration
 
 ### Get an Access Token
 
-All access tokens can be decoded via https://developers.google.com/wallet/digital/docs/jwtdecoder
-Just copy the "access_token" content to the form and click on "Decode JWT"
+All access tokens can be decoded via http://jwt.io
+Just copy and insert the "access_token" content
 
 #### Getting access token via GrantType password
 
