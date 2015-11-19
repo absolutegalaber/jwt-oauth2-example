@@ -77,4 +77,22 @@ Rest GET call to the aggregation server, which uses the presented OAuth2 Token t
 2. Execute `curl -H "Content-Type: application/json" -H "Authorization: Bearer <your token>" http://localhost:8888/api/me`
 
 
+## How to create own key store and corresponding public key file
+
+generate keystore 
+```
+keytool -genkeypair -alias jwt-test -keyalg RSA \
+-dname "CN=jwt,OU=jtw,O=jtw,L=zurich,S=zurich,C=CH" \
+-keypass TODOchange \ 
+-keystore jwt-test.jks \ 
+-storepass TODOchange
+```
+
+or in one step: export public key
+```
+keytool -list -rfc --keystore jwt-test.jks | openssl x509 -inform pem -pubkey
+```
+
+copy paste public key part into public key file: public.cert
+
 
