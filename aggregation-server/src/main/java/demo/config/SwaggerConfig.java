@@ -44,9 +44,9 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter implements ServletCon
     }
     /**
     private List<AuthorizationType> authorizationTypes() {
-        List<AuthorizationScope> scopes = Arrays.asList(new AuthorizationScope("read","Read persmission"));
-        GrantType impilcit = new ImplicitGrant(new LoginEndpoint("http://localhost:8080/login"),"auth_token");
-        List<GrantType> grantTypes = Arrays.asList(impilcit);
+        List<AuthorizationScope> scopes = Arrays.asList(new AuthorizationScope("read","Read permission"));
+        GrantType implicit = new ImplicitGrant(new LoginEndpoint("http://localhost:8080/login"),"auth_token");
+        List<GrantType> grantTypes = Arrays.asList(implicit);
         return Arrays.asList(new OAuth(scopes,grantTypes));
     } **/
 
@@ -58,7 +58,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter implements ServletCon
     }
 
     private List<AuthorizationType> authorizationTypes() {
-        ArrayList<AuthorizationType> authorizationTypes = new ArrayList<AuthorizationType>();
+        ArrayList<AuthorizationType> authorizationTypes = new ArrayList<>();
 
         List<AuthorizationScope> authorizationScopeList = new ArrayList();
         authorizationScopeList.add(new AuthorizationScope("global", "access all"));
