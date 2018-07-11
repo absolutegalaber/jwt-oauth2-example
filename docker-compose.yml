@@ -1,0 +1,24 @@
+auth-server:
+  image: openjdk:8-jre-alpine
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./auth-server/target/auth-server-0.0.1-SNAPSHOT.jar:/opt/auth.jar:rw
+  working_dir: /opt
+  command: java -jar auth.jar
+resource-server:
+  image: openjdk:8-jre-alpine
+  ports:
+    - "8088:8088"
+  volumes:
+    - ./resource-server/target/resource-server-0.0.1-SNAPSHOT.jar:/opt/resource.jar:rw
+  working_dir: /opt
+  command: java -jar resource.jar
+aggregation-server:
+  image: openjdk:8-jre-alpine
+  ports:
+    - "8888:8888"
+  volumes:
+    - ./aggregation-server/target/aggregation-server-0.0.1-SNAPSHOT.jar:/opt/aggregation.jar:rw
+  working_dir: /opt
+  command: java -jar aggregation.jar
